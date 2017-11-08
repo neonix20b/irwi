@@ -8,7 +8,7 @@ module Irwi::Helpers::WikiPagesHelper
   end
 
   def wiki_page_new_path
-    page = CGI.escape(params[:path]) if params && params[:path].present?
+    page = params[:path] if params && params[:path].present?
     wiki_page_path(page, :new)
   end
 
@@ -75,7 +75,7 @@ module Irwi::Helpers::WikiPagesHelper
 
   def wiki_link(title)
     page = Irwi.config.page_class.find_by_title(title)
-    path = page ? page.path : CGI.escape(title)
+    path = page ? page.path : title
 
     url_for(controller: Irwi.config.controller_name, action: :show, path: path)
   end
