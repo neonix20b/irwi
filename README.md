@@ -74,10 +74,13 @@ Each formatter should have method `format`, which gets a string and returns it f
 
 There are several supported formatters based on different gems (which tou should add to `Gemfile` of your application):
 * `Irwi::Formatters::RedCloth` - markdown formatter based on `RedCloth` gem.
-* `Irwi::Formatters::RedCarpet` - markdown formatter based on `redcarpet  gem.
+* `Irwi::Formatters::RedCarpet` - markdown formatter based on `redcarpet`  gem.
+* `Irwi::Formatters::Kramdown` - markdown formatter based on `kramdown`  gem.
 * `Irwi::Formatters::BlueCloth` - textile formatter based on `BlueCloth` gem.
 * `Irwi::Formatters::WikiCloth` - formatter based on `wiki_cloth` gem.
 * `Irwi::Formatters::SimpleHtml` which does nothing.
+
+
 
 By default, Irwi will select first available (having corresponding gem in application `Gemfile`) formatter.
 Also, you may select formatter explicitly by specifying `Irwi.config.formatter` value like:
