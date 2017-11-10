@@ -31,10 +31,10 @@ module Irwi::Extensions::Models::WikiPage
     belongs_to :creator, class_name: Irwi.config.user_class_name
     belongs_to :updator, class_name: Irwi.config.user_class_name
 
-    has_many :versions, -> { order('id DESC') }, class_name: Irwi.config.page_version_class_name, foreign_key: Irwi.config.page_version_foreign_key
+    has_many :versions, -> { order('id DESC') }, class_name: Irwi.config.page_version_class_name, foreign_key: Irwi.config.page_version_foreign_key, dependent: :destroy
 
     if Irwi.config.page_attachment_class_name
-      has_many :attachments, class_name: Irwi.config.page_attachment_class_name, foreign_key: Irwi.config.page_version_foreign_key
+      has_many :attachments, class_name: Irwi.config.page_attachment_class_name, foreign_key: Irwi.config.page_version_foreign_key, dependent: :destroy
     end
 
     before_save { |record| record.content = '' if record.content.nil? }
